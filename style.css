@@ -1,319 +1,140 @@
-/* Reset CSS cơ bản */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    user-select: none;
-    -webkit-user-select: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    background-color: #0f172a;
-    color: #f8fafc;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow-x: hidden;
-    position: relative;
-}
-
-/* Hiệu ứng nền phát sáng */
-.background-glow {
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(15, 23, 42, 0) 70%);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 0;
-    pointer-events: none;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at center, #2c3e50, #0f172a);
+  color: #fff;
 }
 
 .container {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 650px;
-    padding: 2rem 1.5rem;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2.5rem;
-}
-
-/* Header */
-.badge {
-    display: inline-block;
-    padding: 0.35rem 1rem;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 999px;
-    font-size: 0.75rem;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    color: #94a3b8;
-    margin-bottom: 1rem;
+  text-align: center;
+  padding: 20px;
 }
 
 .title {
-    font-size: 2.5rem;
-    font-weight: 900;
-    background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    line-height: 1.2;
-    margin-bottom: 0.5rem;
+  font-size: 2.2rem;
+  margin-bottom: 8px;
+  font-weight: 700;
 }
 
 .subtitle {
-    color: #64748b;
-    font-size: 1rem;
+  font-size: 1.1rem;
+  color: #94a3b8;
+  margin-bottom: 50px;
 }
 
-/* Khung chứa các nút bấm */
-.buttons-stage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 3rem;
-    width: 100%;
-    padding: 1rem 0;
-}
-
+/* Nút bấm tròn 3D như thật */
 .button-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
 }
 
-.btn-label {
-    font-size: 0.875rem;
-    font-weight: 800;
-    color: #64748b;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-
-/* THIẾT KẾ NÚT BẤM 3D HÌNH TRÒN NHƯ THẬT (SKEUOMORPHIC 3D BUTTONS) */
 .btn-3d {
-    position: relative;
-    width: 140px;
-    height: 140px;
-    background: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    border-radius: 50%;
-    -webkit-tap-highlight-color: transparent;
+  position: relative;
+  width: 180px;
+  height: 180px;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #1e293b, #0f172a);
+  padding: 12px;
+  cursor: pointer;
+  outline: none;
+  /* Đổ bóng ngoài tạo độ sâu 3D cho phần bệ */
+  box-shadow: 
+    0 20px 35px rgba(0, 0, 0, 0.6),
+    inset 0 2px 3px rgba(255, 255, 255, 0.2),
+    inset 0 -2px 5px rgba(0, 0, 0, 0.8);
+  transition: transform 0.1s ease;
 }
 
-/* Đế dưới của nút bấm (Tạo độ sâu 3D & bóng chìa ra) */
-.btn-base {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Mặt trên của nút bấm (Cực kỳ chân thực với viền kim loại & phản chiếu) */
 .btn-top {
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transform: translateY(-12px);
-    transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.15s ease;
-    z-index: 2;
-}
-
-/* Ánh sáng bóng loáng phản chiếu mặt kính 3D */
-.btn-top::before {
-    content: '';
-    position: absolute;
-    top: 5%;
-    left: 15%;
-    width: 70%;
-    height: 40%;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0) 100%);
-    border-radius: 50% 50% 30% 30%;
-    pointer-events: none;
-}
-
-.btn-icon {
-    font-size: 2.2rem;
-    font-weight: 900;
-    line-height: 1;
-    color: #ffffff;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  /* Độ dốc màu đỏ 3D */
+  background: radial-gradient(circle at 35% 35%, #ff6b6b, #dc2626 60%, #991b1b);
+  box-shadow: 
+    inset 0 6px 12px rgba(255, 255, 255, 0.4),
+    inset 0 -8px 12px rgba(0, 0, 0, 0.6),
+    0 10px 15px rgba(220, 38, 38, 0.4);
+  position: relative;
+  transition: all 0.1s ease;
 }
 
 .btn-text {
-    font-size: 1.1rem;
-    font-weight: 900;
-    color: #ffffff;
-    letter-spacing: 0.05em;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
 }
 
-/* ================= NÚT YES (MÀU XANH LA MẠ / EMERALD 3D) ================= */
-.btn-yes .btn-base {
-    background: linear-gradient(180deg, #047857 0%, #064e3b 100%);
-    box-shadow: 
-        0 15px 25px rgba(16, 185, 129, 0.35),
-        0 8px 10px rgba(0, 0, 0, 0.5);
-}
-
-.btn-yes .btn-top {
-    background: radial-gradient(circle at 50% 30%, #34d399 0%, #10b981 60%, #059669 100%);
-    border: 2px solid #6ee7b7;
-    box-shadow: 
-        inset 0 3px 6px rgba(255, 255, 255, 0.6),
-        inset 0 -6px 12px rgba(0, 0, 0, 0.4),
-        0 12px 0 #047857;
-}
-
-/* ================= NÚT NO (MÀU ĐỎ DÂU / ROSE 3D) ================= */
-.btn-no .btn-base {
-    background: linear-gradient(180deg, #be123c 0%, #881337 100%);
-    box-shadow: 
-        0 15px 25px rgba(244, 63, 94, 0.35),
-        0 8px 10px rgba(0, 0, 0, 0.5);
-}
-
-.btn-no .btn-top {
-    background: radial-gradient(circle at 50% 30%, #fb7185 0%, #f43f5e 60%, #e11d48 100%);
-    border: 2px solid #fca5a5;
-    box-shadow: 
-        inset 0 3px 6px rgba(255, 255, 255, 0.6),
-        inset 0 -6px 12px rgba(0, 0, 0, 0.4),
-        0 12px 0 #be123c;
-}
-
-/* HIỆU ỨNG RÊ CHUỘT (HOVER) */
-.btn-3d:hover .btn-top {
-    transform: translateY(-14px);
-}
-
-.btn-yes:hover .btn-top {
-    box-shadow: 
-        inset 0 3px 8px rgba(255, 255, 255, 0.8),
-        inset 0 -6px 12px rgba(0, 0, 0, 0.4),
-        0 14px 0 #047857,
-        0 0 25px rgba(52, 211, 153, 0.6);
-}
-
-.btn-no:hover .btn-top {
-    box-shadow: 
-        inset 0 3px 8px rgba(255, 255, 255, 0.8),
-        inset 0 -6px 12px rgba(0, 0, 0, 0.4),
-        0 14px 0 #be123c,
-        0 0 25px rgba(251, 113, 133, 0.6);
-}
-
-/* HIỆU ỨNG NHẤN NÚT LÚN XUỐNG THẬT (ACTIVE / PRESS DOWN) */
+/* Hiệu ứng khi nhấn xuống */
 .btn-3d:active .btn-top {
-    transform: translateY(-2px);
+  transform: translateY(6px) scale(0.98);
+  box-shadow: 
+    inset 0 3px 6px rgba(255, 255, 255, 0.2),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.8),
+    0 2px 5px rgba(220, 38, 38, 0.2);
 }
 
-.btn-yes:active .btn-top {
-    box-shadow: 
-        inset 0 2px 4px rgba(0, 0, 0, 0.6),
-        0 2px 0 #047857;
+.btn-3d:disabled {
+  cursor: not-allowed;
+  opacity: 0.8;
 }
 
-.btn-no:active .btn-top {
-    box-shadow: 
-        inset 0 2px 4px rgba(0, 0, 0, 0.6),
-        0 2px 0 #be123c;
+/* Khung hiển thị kết quả */
+.result-box {
+  min-height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* THẺ KẾT QUẢ HAS ANIMATION */
-.result-card {
-    background: rgba(30, 41, 59, 0.7);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 24px;
-    padding: 2rem;
-    width: 100%;
-    margin-top: 1rem;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+.result-box.hidden {
+  opacity: 0;
+  visibility: hidden;
 }
 
-.result-card.hidden {
-    display: none;
+#resultText {
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  transition: transform 0.2s ease;
 }
 
-.result-icon {
-    font-size: 3rem;
-    margin-bottom: 0.5rem;
+/* Màu sắc theo kết quả */
+.yes-style {
+  color: #4ade80;
+  text-shadow: 0 0 20px rgba(74, 222, 128, 0.6);
 }
 
-.result-title {
-    font-size: 1.5rem;
-    font-weight: 800;
-    margin-bottom: 0.5rem;
+.no-style {
+  color: #f87171;
+  text-shadow: 0 0 20px rgba(248, 113, 113, 0.6);
 }
 
-.result-desc {
-    color: #94a3b8;
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
+/* Hiệu ứng xoay khi đang tính toán */
+.spinning {
+  animation: spin 0.1s infinite linear;
+  color: #facc15;
 }
 
-.reset-btn {
-    background: rgba(255, 255, 255, 0.1);
-    color: #f8fafc;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    padding: 0.75rem 1.75rem;
-    border-radius: 99px;
-    font-weight: 700;
-    font-family: inherit;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.reset-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.05);
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Responsive cho điện thoại */
-@media (max-width: 480px) {
-    .title {
-        font-size: 1.8rem;
-    }
-    .buttons-stage {
-        gap: 1.5rem;
-    }
-    .btn-3d {
-        width: 110px;
-        height: 110px;
-    }
-    .btn-icon {
-        font-size: 1.8rem;
-    }
-    .btn-text {
-        font-size: 0.95rem;
-    }
+@keyframes spin {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
