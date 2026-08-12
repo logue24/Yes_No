@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quyết Định Yes / No - 3D Buttons</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Google Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;800;900&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti Library -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div class="background-glow"></div>
+    
+    <main class="container">
+        <header class="header">
+            <span class="badge">TRUY VẤN QUYẾT ĐỊNH</span>
+            <h1 class="title" id="questionText">Bạn có đồng ý không?</h1>
+            <p class="subtitle">Nhấn vào nút bấm nổi bên dưới để đưa ra lựa chọn của bạn</p>
+        </header>
+
+        <!-- Khung chứa 2 nút bấm 3D nổi bật -->
+        <div class="buttons-stage">
+            <!-- Nút YES (Màu Xanh) -->
+            <div class="button-wrapper">
+                <button class="btn-3d btn-yes" id="btnYes" aria-label="Đồng ý">
+                    <span class="btn-top">
+                        <span class="btn-icon">✓</span>
+                        <span class="btn-text">YES</span>
+                    </span>
+                    <span class="btn-base"></span>
+                </button>
+                <span class="btn-label">Đồng Ý</span>
+            </div>
+
+            <!-- Nút NO (Màu Đỏ) -->
+            <div class="button-wrapper">
+                <button class="btn-3d btn-no" id="btnNo" aria-label="Từ chối">
+                    <span class="btn-top">
+                        <span class="btn-icon">✕</span>
+                        <span class="btn-text">NO</span>
+                    </span>
+                    <span class="btn-base"></span>
+                </button>
+                <span class="btn-label">Từ Chối</span>
+            </div>
+        </div>
+
+        <!-- Khung hiển thị kết quả -->
+        <div class="result-card hidden" id="resultCard">
+            <div class="result-icon" id="resultIcon">🎉</div>
+            <h2 class="result-title" id="resultTitle">Bạn đã chọn YES!</h2>
+            <p class="result-desc" id="resultDesc">Quyết định tuyệt vời! Hệ thống đã ghi nhận lựa chọn của bạn.</p>
+            <button class="reset-btn" id="btnReset">Thử lại lần nữa</button>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
