@@ -1,31 +1,72 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quyết Định Yes/No</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#060e1f">
+<title>Máy Phán Quyết — Yes hay No?</title>
+<meta name="description" content="Bấm nút 3D, nhận câu trả lời Yes hoặc No tức thì. Có âm thanh, rung phản hồi và lưu lịch sử ngay trên trình duyệt.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Be+Vietnam+Pro:wght@400;600;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <h1 class="title">Bạn đang phân vân?</h1>
-    <p class="subtitle">Nhấn nút bên dưới để nhận câu trả lời</p>
+<button type="button" class="sound-toggle" id="soundToggle" aria-label="Tắt âm thanh">
+  <span id="soundIcon">🔊</span>
+</button>
 
-    <!-- Nút bấm 3D -->
-    <div class="button-wrapper">
-      <button id="decisionBtn" class="btn-3d">
-        <span class="btn-top">
-          <span class="btn-text">BẮT ĐẦU</span>
+<main class="stage">
+  <header class="header">
+    <h1 class="title">MÁY PHÁN QUYẾT</h1>
+    <p class="subtitle">Phân vân chuyện gì? Bấm nút để số phận trả lời.</p>
+  </header>
+
+  <input type="text" id="questionInput" class="question-input" placeholder="Nhập câu hỏi của bạn (không bắt buộc)…" maxlength="120" autocomplete="off">
+
+  <div class="button-stage">
+    <div class="button-arena">
+      <div class="button-glow" aria-hidden="true"></div>
+      <button type="button" class="btn3d" id="mainButton" aria-label="Bấm để nhận câu trả lời Yes hoặc No">
+        <span class="btn3d-face">
+          <span class="btn3d-label" id="btnLabel">BẤM</span>
         </span>
       </button>
     </div>
+    <div class="contact-shadow" aria-hidden="true"></div>
+  </div>
 
-    <!-- Khung hiển thị kết quả -->
-    <div id="resultBox" class="result-box hidden">
-      <span id="resultText">YES</span>
+  <div class="result-zone" id="resultZone" aria-live="polite">
+    <div class="stamp" id="stamp">
+      <span id="stampText">YES</span>
+    </div>
+    <p class="result-question" id="resultQuestion"></p>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat">
+      <span class="stat-value" id="statTotal">0</span>
+      <span class="stat-label">Lần bấm</span>
+    </div>
+    <div class="stat stat-yes">
+      <span class="stat-value" id="statYes">0</span>
+      <span class="stat-label">Yes</span>
+    </div>
+    <div class="stat stat-no">
+      <span class="stat-value" id="statNo">0</span>
+      <span class="stat-label">No</span>
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <section class="history-wrap">
+    <div class="history-head">
+      <span>LỊCH SỬ GẦN ĐÂY</span>
+      <button type="button" class="ghost-btn" id="resetBtn">Làm lại từ đầu</button>
+    </div>
+    <ul class="history-list" id="historyList"></ul>
+  </section>
+</main>
+
+<script src="script.js"></script>
 </body>
 </html>
